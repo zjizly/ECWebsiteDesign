@@ -1,0 +1,1088 @@
+
+
+<!DOCTYPE html>
+
+
+
+
+ 
+
+
+<html>
+
+<head>
+	<script src="js/jquery/2.0.0/jquery.min.js"></script>
+	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+	<link href="css/fore/style.css" rel="stylesheet">
+<script>
+function formatMoney(num){
+	num = num.toString().replace(/\$|\,/g,'');  
+	if(isNaN(num))  
+	    num = "0";  
+	sign = (num == (num = Math.abs(num)));  
+	num = Math.floor(num*100+0.50000000001);  
+	cents = num%100;  
+	num = Math.floor(num/100).toString();  
+	if(cents<10)  
+	cents = "0" + cents;  
+	for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)  
+	num = num.substring(0,num.length-(4*i+3))+','+  
+	num.substring(num.length-(4*i+3));  
+	return (((sign)?'':'-') + num + '.' + cents);  
+}
+function checkEmpty(id, name){
+	var value = $("#"+id).val();
+	if(value.length==0){
+		
+		$("#"+id)[0].focus();
+		return false;
+	}
+	return true;
+}
+
+
+$(function(){
+
+	
+	$("a.productDetailTopReviewLink").click(function(){
+		$("div.productReviewDiv").show();
+		$("div.productDetailDiv").hide();
+	});
+	$("a.productReviewTopPartSelectedLink").click(function(){
+		$("div.productReviewDiv").hide();
+		$("div.productDetailDiv").show();		
+	});
+	
+	$("span.leaveMessageTextareaSpan").hide();
+	$("img.leaveMessageImg").click(function(){
+		
+		$(this).hide();
+		$("span.leaveMessageTextareaSpan").show();
+		$("div.orderItemSumDiv").css("height","100px");
+	});
+	
+	$("div#footer a[href$=#nowhere]").click(function(){
+		alert("模仿天猫的连接，并没有跳转到实际的页面");
+	});
+	
+
+	$("a.wangwanglink").click(function(){
+		alert("模仿旺旺的图标，并不会打开旺旺");
+	});
+	$("a.notImplementLink").click(function(){
+		alert("这个功能没做，蛤蛤~");
+	});
+	
+
+});
+
+</script>	
+</head>
+
+<body>
+
+
+
+
+<nav class="top ">
+	<div class="top_middle">
+	
+		<a href="/tmall">
+			<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
+			天猫首页
+		</a>	
+		
+		<span>喵，欢迎来天猫</span>
+		
+		
+		
+		
+			<a href="login.jsp">请登录</a>
+			<a href="register.jsp">免费注册</a>		
+		
+
+
+		<span class="pull-right">
+			<a href="forebought">我的订单</a>
+			<a href="forecart">
+			<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor"></span>
+			购物车<strong>0</strong>件</a>		
+		</span>
+	</div>
+</nav>
+
+
+
+
+
+
+
+
+<div class="simpleSearchOutDiv">
+	<a href="/tmall">
+		<img id="simpleLogo" class="simpleLogo" src="img/site/simpleLogo.png">	
+	</a>
+	
+	<form action="foresearch" method="post" >	
+	<div class="simpleSearchDiv pull-right">
+		<input type="text" placeholder="平衡车 原汁机"  value="" name="keyword">
+		<button class="searchButton" type="submit">搜天猫</button>
+		<div class="searchBelow">
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+					<span>
+						<a href="forecategory?cid=76">
+							冰箱
+						</a>
+										
+							<span>|</span>				
+						
+					</span>			
+				
+			
+				
+					<span>
+						<a href="forecategory?cid=75">
+							空调
+						</a>
+										
+							<span>|</span>				
+						
+					</span>			
+				
+			
+				
+					<span>
+						<a href="forecategory?cid=74">
+							女表
+						</a>
+										
+							<span>|</span>				
+						
+					</span>			
+				
+			
+				
+					<span>
+						<a href="forecategory?cid=73">
+							男表
+						</a>
+						
+					</span>			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+						
+		</div>
+	</div>
+	</form>
+	<div style="clear:both"></div>
+</div>
+
+
+
+<title>模仿天猫官网 七匹狼牛皮手包男双拉链多卡位大容量手拿包男商务休闲真皮手机包</title>
+<div class="categoryPictureInProductPageDiv">
+	<img class="categoryPictureInProductPage" src="img/category/72.jpg">
+</div>
+
+<div class="productPageDiv">
+
+	
+
+
+<script>
+
+$(function(){
+	var stock = 32;
+	$(".productNumberSetting").keyup(function(){
+		var num= $(".productNumberSetting").val();
+		num = parseInt(num);
+		if(isNaN(num))
+			num= 1;
+		if(num<=0)
+			num = 1;
+		if(num>stock)
+			num = stock;
+		$(".productNumberSetting").val(num);
+	});
+	
+	$(".increaseNumber").click(function(){
+		var num= $(".productNumberSetting").val();
+		num++;
+		if(num>stock)
+			num = stock;
+		$(".productNumberSetting").val(num);
+	});
+	$(".decreaseNumber").click(function(){
+		var num= $(".productNumberSetting").val();
+		--num;
+		if(num<=0)
+			num=1;
+		$(".productNumberSetting").val(num);
+	});
+	
+	$(".addCartLink").click(function(){
+		var page = "forecheckLogin";
+		$.get(
+	            page,
+	            function(result){
+	            	if("success"==result){
+	            		var pid = 658;
+	            		var num= $(".productNumberSetting").val();
+	            		var addCartpage = "foreaddCart";
+	            		$.get(
+	            				addCartpage,
+	            	            {"pid":pid,"num":num},
+	            	            function(result){
+	            	            	if("success"==result){
+	            	            		$(".addCartButton").html("已加入购物车");
+	            	            		$(".addCartButton").attr("disabled","disabled");
+	            	            		$(".addCartButton").css("background-color","lightgray")
+	            	            		$(".addCartButton").css("border-color","lightgray")
+	            	            		$(".addCartButton").css("color","black")
+	            	            		
+	            	            	}
+	            	            	else{
+	            	            		
+	            	            	}
+	            	            }
+	            		);		            		
+	            	}
+	            	else{
+						$("#loginModal").modal('show');	            		
+	            	}
+	            }
+		);		
+		return false;
+	});
+	$(".buyLink").click(function(){
+		var page = "forecheckLogin";
+		$.get(
+	            page,
+	            function(result){
+	            	if("success"==result){
+	            		var num = $(".productNumberSetting").val();
+	            		location.href= $(".buyLink").attr("href")+"&num="+num;
+	            	}
+	            	else{
+						$("#loginModal").modal('show');	            		
+	            	}
+	            }
+		);		
+		return false;
+	});
+	
+	$("button.loginSubmitButton").click(function(){
+		var name = $("#name").val();
+		var password = $("#password").val();
+		
+		if(0==name.length||0==password.length){
+			$("span.errorMessage").html("请输入账号密码");
+			$("div.loginErrorMessageDiv").show();			
+			return false;
+		}
+		
+		var page = "foreloginAjax";
+		$.get(
+	            page,
+	            {"name":name,"password":password},
+	            function(result){
+	            	if("success"==result){
+	            		location.reload();
+	            	}
+	            	else{
+	            		$("span.errorMessage").html("账号密码错误");
+	            		$("div.loginErrorMessageDiv").show();	            		
+	            	}
+	            }
+		);			
+		
+		return true;
+	});
+	
+	$("img.smallImage").mouseenter(function(){
+		var bigImageURL = $(this).attr("bigImageURL");
+        $("img.bigImg").attr("src",bigImageURL);
+	});
+	
+	$("img.bigImg").load(
+		function(){
+			$("img.smallImage").each(function(){
+				var bigImageURL = $(this).attr("bigImageURL");
+				img = new Image();
+				img.src = bigImageURL;
+				
+				img.onload = function(){
+					console.log(bigImageURL);	
+					$("div.img4load").append($(img));
+				};
+			});		
+		}
+	);
+});
+
+</script>
+
+	
+<div class="imgAndInfo">
+
+	<div class="imgInimgAndInfo">
+		<img src="img/productSingle/6849.jpg" class="bigImg">
+		<div class="smallImageDiv">
+			
+				<img src="img/productSingle_small/6849.jpg" bigImageURL="img/productSingle/6849.jpg" class="smallImage">
+			
+				<img src="img/productSingle_small/6848.jpg" bigImageURL="img/productSingle/6848.jpg" class="smallImage">
+			
+				<img src="img/productSingle_small/6847.jpg" bigImageURL="img/productSingle/6847.jpg" class="smallImage">
+			
+				<img src="img/productSingle_small/6846.jpg" bigImageURL="img/productSingle/6846.jpg" class="smallImage">
+			
+				<img src="img/productSingle_small/6845.jpg" bigImageURL="img/productSingle/6845.jpg" class="smallImage">
+			
+		</div>
+		<div class="img4load hidden" ></div>
+	</div>
+	
+	<div class="infoInimgAndInfo">
+		
+		<div class="productTitle">
+			七匹狼牛皮手包男双拉链多卡位大容量手拿包男商务休闲真皮手机包
+		</div>
+		<div class="productSubTitle">
+			尊贵牛皮手包 双拉链设计 优雅大气纹理 
+		</div>
+		
+		<div class="productPrice">
+			<div class="juhuasuan">
+				<span class="juhuasuanBig" >聚划算</span>
+				<span>此商品即将参加聚划算，<span class="juhuasuanTime">1天19小时</span>后开始，</span>
+			</div>
+			<div class="productPriceDiv">
+				<div class="gouwujuanDiv"><img height="16px" src="img/site/gouwujuan.png">
+				<span> 全天猫实物商品通用</span>
+				
+				</div>
+				<div class="originalDiv">
+					<span class="originalPriceDesc">价格</span>
+					<span class="originalPriceYuan">¥</span>
+					<span class="originalPrice">
+					
+						499.00					
+					</span>
+				</div>
+				<div class="promotionDiv">
+					<span class="promotionPriceDesc">促销价 </span>
+					<span class="promotionPriceYuan">¥</span>
+					<span class="promotionPrice">
+						474.05
+					</span>				
+				</div>
+			</div>
+		</div>
+		<div class="productSaleAndReviewNumber">
+			<div>销量 <span class="redColor boldWord"> 72</span></div>	
+			<div>累计评价 <span class="redColor boldWord"> 21</span></div>	
+		</div>
+		<div class="productNumber">
+			<span>数量</span>
+			<span>
+				<span class="productNumberSettingSpan">
+				<input class="productNumberSetting" type="text" value="1">
+				</span>
+				<span class="arrow">
+					<a href="#nowhere" class="increaseNumber">
+					<span class="updown">
+							<img src="img/site/increase.png">
+					</span>
+					</a>
+					
+					<span class="updownMiddle"> </span>
+					<a href="#nowhere"  class="decreaseNumber">
+					<span class="updown">
+							<img src="img/site/decrease.png">
+					</span>
+					</a>
+					
+				</span>
+					
+			件</span>
+			<span>库存32件</span>
+		</div>
+		<div class="serviceCommitment">
+			<span class="serviceCommitmentDesc">服务承诺</span>
+			<span class="serviceCommitmentLink">
+				<a href="#nowhere">正品保证</a>
+				<a href="#nowhere">极速退款</a>
+				<a href="#nowhere">赠运费险</a>
+				<a href="#nowhere">七天无理由退换</a>
+			</span>
+		</div>	
+		
+		<div class="buyDiv">
+			<a class="buyLink" href="forebuyone?pid=658"><button class="buyButton">立即购买</button></a>
+			<a href="#nowhere" class="addCartLink"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
+		</div>
+	</div>
+	
+
+
+	<div style="clear:both"></div>
+	
+</div>
+
+
+	
+	
+
+	
+<div class="productReviewDiv" >
+	<div class="productReviewTopPart">
+		<a  href="#nowhere" class="productReviewTopPartSelectedLink">商品详情</a>
+		<a  href="#nowhere" class="selected">累计评价 <span class="productReviewTopReviewLinkNumber">21</span> </a>
+	</div>
+	
+		
+	<div class="productReviewContentPart">
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					你看了
+				</div>
+				<div class="productReviewItemDate">2017-02-14</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				g***************g<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					规划法规和
+				</div>
+				<div class="productReviewItemDate">2017-02-14</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				g***************g<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					用了两天了，买的黑色小号，质量非常好，容量大，携带方便，还会再来！
+				</div>
+				<div class="productReviewItemDate">2016-07-16</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				y****心<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包非常不错哦，给领导买的，皮质非常软，又上档次，非常适用，选的比较成功！
+				</div>
+				<div class="productReviewItemDate">2016-07-18</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				想****〃<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					很简单大方，袋子里面有些味道，做工还可以，容量挺大！
+				</div>
+				<div class="productReviewItemDate">2016-07-13</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				安**°<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包不错哦，皮质也挺好的，买了大号 觉得小号应该会更精致点。总之还是挺满意的，赞一个！！！
+				</div>
+				<div class="productReviewItemDate">2016-07-15</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				死***堂<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					收到包包了，质量很好，摸着很舒服，也没有味道，大小合适用起来也很方便，放很多东西老公很喜欢，喜欢的朋友赶快下手吧
+				</div>
+				<div class="productReviewItemDate">2016-08-17</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				乱**型<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					宝贝手感不错，很有气质，包包还有很多夹层，容量很大，非常满意
+				</div>
+				<div class="productReviewItemDate">2016-08-17</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				阿*丶<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					收到快递感觉就很好！首先店家包装的很好！打开包装一看就好喜欢，夏天了衣服没兜，钱包，钥匙，手机一样也没落，外观跟描述的相符，材质也相符，一分价钱一分货，值 比较了好几家店铺，最后选择了这家。卖家的态度和服务都很好，回答问题也狠有耐心，拍下后发货什么的都很及时
+				</div>
+				<div class="productReviewItemDate">2016-08-04</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				y****心<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包装很精致上档次，牛皮的是肯定的，入手感觉非常柔软细腻的皮质，大爱，物流也够给力的。这家店还真就是无意中发现的，这下捡到宝了，也祝老板生意能办的越来越好
+				</div>
+				<div class="productReviewItemDate">2016-08-06</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				丶***眠<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					手感挺好的，软软的，包包很大，可以装几万块钱，里面的是我的卡包。目前感觉挺好的，宝贝大爱
+				</div>
+				<div class="productReviewItemDate">2016-08-11</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				安**°<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包确实不错，皮质厚实、细致、柔软、顺滑，走线也比较严密，内衬也比较厚实，总之质量不错，就是感觉还有些小。 不错
+				</div>
+				<div class="productReviewItemDate">2016-08-20</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				图***了<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包已收到，手感特别柔软，老公特别喜欢，做工也特别细致，这款包包真的很不错哦！
+				</div>
+				<div class="productReviewItemDate">2016-08-02</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				鬼**脸<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					这个包非常好，空间大皮子质量也非常好，手感非常舒服，如果有谁需要的可以买。下次还会买，给个好评
+				</div>
+				<div class="productReviewItemDate">2016-07-13</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				阿*丶<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					非常好的一款包，因为以前在他家买过手包，信得过质量，所以又来购买大一点的包，还是那样没有任何问题，但是不得不提一个建议，就是卡位设计的太深了，不方便拿取。包很大，可以放好多东西。
+				</div>
+				<div class="productReviewItemDate">2016-08-24</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				l******1<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包收到，细腻柔软，手感特别好，拿着感觉很上档次，拉链顺滑，使用方便。
+				</div>
+				<div class="productReviewItemDate">2016-08-14</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				乱**型<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包的色调和皮料都很舒服，老公特别喜欢的的尺寸，他说终于有个大点的手拿包啦！值得购买，卖家发货超快！
+				</div>
+				<div class="productReviewItemDate">2016-08-07</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				l******1<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					包包收到了，皮子细腻柔软，拿在手里，感觉也相当有档次，感觉也特别的好，包装也太给力了，外面一个大纸盒箱，里面一个小纸盒箱，真是难为你们了，总之，一切都挺好，比以前的那个多装了不少东西，
+				</div>
+				<div class="productReviewItemDate">2016-08-21</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				亡***子<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					非常不错
+				</div>
+				<div class="productReviewItemDate">2016-07-18</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				名*****_<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					大小合适，皮质柔软，做工还不错，拉链结束的那个地方稍有点卡不太顺，不知道用时间长了会不会好点，基本满意，5分！
+				</div>
+				<div class="productReviewItemDate">2016-07-16</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				死***堂<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+		<div class="productReviewItem">
+		
+			<div class="productReviewItemDesc">
+				<div class="productReviewItemContent">
+					皮质软，有天然皮的气味，款式不太新颖，特别适合土老板用，总体来说比较满意
+				</div>
+				<div class="productReviewItemDate">2016-08-13</div>
+			</div>
+			<div class="productReviewItemUserInfo">
+			
+				阿*丶<span class="userInfoGrayPart">（匿名）</span>
+			</div>
+			
+			<div style="clear:both"></div>
+		
+		</div>
+		
+	</div>
+
+</div>
+
+	
+	
+
+	
+<div class="productDetailDiv" >
+	<div class="productDetailTopPart">
+		<a href="#nowhere" class="productDetailTopPartSelectedLink selected">商品详情</a>
+		<a href="#nowhere" class="productDetailTopReviewLink">累计评价 <span class="productDetailTopReviewLinkNumber">21</span> </a>
+	</div>
+	
+	
+	<div class="productParamterPart">
+		<div class="productParamter">产品参数：</div>
+		
+		<div class="productParamterList">
+			
+				<span>皮革材质:  头层牛皮 </span>
+			
+				<span>货号:  N8027-1 </span>
+			
+				<span>有无夹层:  无 </span>
+			
+				<span>是否可折叠:  否 </span>
+			
+				<span>闭合方式:  拉链 </span>
+			
+				<span>提拎部件类型:  装卸式提把 </span>
+			
+				<span>适用场景:  商务 </span>
+			
+				<span>拿包方式:  手拿 </span>
+			
+				<span>质地:  牛皮 </span>
+			
+				<span>适用对象:  青年 </span>
+			
+				<span>箱包外袋种类:  内贴袋 </span>
+			
+				<span>形状:  横款方形 </span>
+			
+				<span>品牌:  BISON DENI </span>
+			
+				<span>上市时间:  2015年秋季 </span>
+			
+				<span>里料材质:  涤纶 </span>
+			
+				<span>成色:  全新 </span>
+			
+				<span>图案:  纯色 </span>
+			
+				<span>款式:  手拿包 </span>
+			
+				<span>箱包硬度:  软 </span>
+			
+				<span>颜色分类:  小号黑色 大号黑色  </span>
+			
+				<span>内部结构:  拉链暗袋 </span>
+			
+				<span>大小:  小 </span>
+			
+				<span>风格:  商务/OL </span>
+			
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	
+	<div class="productDetailImagesPart">
+			
+				<img src="img/productDetail/6855.jpg">
+			
+				<img src="img/productDetail/6854.jpg">
+			
+				<img src="img/productDetail/6853.jpg">
+			
+				<img src="img/productDetail/6852.jpg">
+			
+				<img src="img/productDetail/6851.jpg">
+			
+				<img src="img/productDetail/6850.jpg">
+			
+	</div>
+</div>
+
+
+	
+	
+
+</div>
+
+
+
+
+
+<div class="modal " id="loginModal" tabindex="-1" role="dialog" >
+	<div class="modal-dialog loginDivInProductPageModalDiv">
+	        <div class="modal-content">
+					<div class="loginDivInProductPage">
+						<div class="loginErrorMessageDiv">
+							<div class="alert alert-danger" >
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+							  	<span class="errorMessage"></span>
+							</div>
+						</div>
+							
+						<div class="login_acount_text">账户登录</div>
+						<div class="loginInput " >
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-user"></span>
+							</span>
+							<input id="name" name="name" placeholder="手机/会员名/邮箱" type="text">			
+						</div>
+						
+						<div class="loginInput " >
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-lock"></span>
+							</span>
+							<input id="password" name="password"  type="password" placeholder="密码" type="text">			
+						</div>
+						
+						<div>
+							<a href="#nowhere">忘记登录密码</a> 
+							<a href="register.jsp" class="pull-right">免费注册</a> 
+						</div>
+						<div style="margin-top:20px">
+							<button class="btn btn-block redButton loginSubmitButton" type="submit">登录</button>
+						</div>
+					</div>	
+	      </div>
+	</div>
+</div>
+
+<div class="modal" id="deleteConfirmModal" tabindex="-1" role="dialog" >
+	<div class="modal-dialog deleteConfirmModalDiv">
+       <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">确认删除？</h4>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+            <button class="btn btn-primary deleteConfirmButton" id="submit" type="button">确认</button>
+          </div>
+        </div>
+      </div>
+	</div>
+</div>
+
+<div id="footer"  class="footer" style="display: block;">
+	
+    <div id="footer_ensure" class="footer_ensure">
+            <a href="#nowhere">
+            	<img src="img/site/ensure.png">
+            </a>
+    </div>
+
+	<div class="horizontal_line">
+	</div>
+	    
+    <div id="footer_desc" class="footer_desc">
+            <div class="descColumn">
+			    <span class="descColumnTitle">购物指南</span>
+			    <a href="#nowhere" >免费注册</a> 
+			    <a href="#nowhere" >开通支付宝</a> 
+			    <a href="#nowhere" >支付宝充值</a>
+			</div>
+            <div class="descColumn">
+			    <span class="descColumnTitle">天猫保障</span>
+			    <a href="#nowhere" >发票保障</a> 
+			    <a href="#nowhere" >售后规则</a> 
+			    <a href="#nowhere" >缺货赔付</a>
+			</div>
+            <div class="descColumn">
+			    <span class="descColumnTitle">支付方式</span>
+			    <a href="#nowhere" >快捷支付</a> 
+			    <a href="#nowhere" >信用卡</a> 
+			    <a href="#nowhere" >蚂蚁花呗</a>
+			    <a href="#nowhere" >货到付款</a>
+			</div>
+            <div class="descColumn">
+			    <span class="descColumnTitle">商家服务</span>
+			    <a href="#nowhere" >商家入驻</a> 
+			    <a href="#nowhere" >商家中心</a> 
+			    <a href="#nowhere" >天猫智库</a>
+			    <a href="#nowhere" >天猫规则</a>
+			    <a href="#nowhere" >物流服务</a>
+			    <a href="#nowhere" >喵言喵语</a>
+			    <a href="#nowhere" >运营服务</a>
+			</div>
+            <div class="descColumn">
+			    <span class="descColumnTitle">手机天猫</span>
+			    <a href="#nowhere" ><img src="img/site/ma.png"></a> 
+			</div>
+			
+    </div>
+    
+    <div style="clear:both"></div>
+    
+    
+    
+    <div id="copyright" class="copyright">
+    	<div class="coptyrightMiddle">
+    	<img id="cateye" class="cateye" src="img/site/cateye.png">
+		<div class="white_link" >
+			<a href="#nowhere" style="padding-left:0px" >关于天猫</a>
+			<a href="#nowhere" > 帮助中心</a>
+			<a href="#nowhere" >开放平台</a>
+			<a href="#nowhere" >  诚聘英才</a>
+			<a href="#nowhere" >联系我们</a>
+			<a href="#nowhere" >网站合作</a>
+			<a href="#nowhere" >法律声明</a>
+			<a href="#nowhere" >知识产权</a>
+			<a href="#nowhere" >  廉正举报	</a>
+		</div>
+		<div class="white_link" >
+			<a href="#nowhere"  style="padding-left:0px"> 阿里巴巴集团</a><span class="slash">|</span>
+			<a href="#nowhere" > 淘宝网</a><span class="slash">|</span>
+			<a href="#nowhere" >天猫 </a><span class="slash">|</span>
+			<a href="#nowhere" >  聚划算</a><span class="slash">|</span>
+			<a href="#nowhere" >全球速卖通</a><span class="slash">|</span>
+			<a href="#nowhere" >阿里巴巴国际交易市场</a><span class="slash">|</span>
+			<a href="#nowhere" >1688</a><span class="slash">|</span>
+			<a href="#nowhere" >阿里妈妈</a><span class="slash">|</span>
+			<a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>
+			<a href="#nowhere" >  阿里云计算	</a><span class="slash">|</span>
+			<a href="#nowhere" >  阿里通信 	</a><span class="slash">|</span>
+			<a href="#nowhere" >  YunOS	</a><span class="slash">|</span>
+			<a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>
+			<a href="#nowhere" >   万网	</a><span class="slash">|</span>
+			<a href="#nowhere" >  高德	</a><span class="slash">|</span>
+			<a href="#nowhere" > 优视 	</a><span class="slash">|</span>
+			<a href="#nowhere" >  友盟	</a><span class="slash">|</span>
+			<a href="#nowhere" >  虾米	</a><span class="slash">|</span>
+			<a href="#nowhere" >  天天动听	</a><span class="slash">|</span>
+			<a href="#nowhere" >  来往	</a><span class="slash">|</span>
+			<a href="#nowhere" >  钉钉	</a><span class="slash">|</span>
+			<a href="#nowhere" >  支付宝 		</a>
+		</div>
+	
+		<div class="license">
+			<span>增值电信业务经营许可证： 浙B2-20110446</span>
+			<span>网络文化经营许可证：浙网文[2015]0295-065号</span>
+			<span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+			<span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
+		    <div class="copyRightYear">&copy; 2003-2016 TMALL.COM 版权所有</div>
+		    <div>
+		    	<img src="img/site/copyRight1.jpg">
+		    	<img src="img/site/copyRight2.jpg">
+		    </div>
+		</div>
+   	 </div>
+   </div>
+</div>
+</body>
+</html>
